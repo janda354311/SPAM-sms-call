@@ -5,6 +5,9 @@ Tutorial:
 apt update && apt upgrade
 pkg update
 pkg install python
+pkg install ruby
+pkg install git
+pkg install --upgrade pip
 git clone https://github.com/ubed354311/SPAM.git
 cd SPAM
 pip install -r kontol.txt
