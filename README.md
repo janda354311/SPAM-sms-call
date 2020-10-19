@@ -5,7 +5,7 @@ Tutorial:
 apt update && apt upgrade
 pkg update
 pkg install python
-git clone https://github.com/ubed354311/SPAM
+git clone https://github.com/ubed354311/SPAM.git
 cd SPAM
 pip install -r kontol.txt
 python ubed.py
