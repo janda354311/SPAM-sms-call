@@ -110,7 +110,6 @@ class main:
       loding()
       spam.asakita(nom)
       loding()
-      
       spam.sunchila(nom)
       loding()
       spam.nutriclub(nom)
@@ -153,7 +152,7 @@ class main:
       loding()
       spam.bocil(nom)
       loding()
-     spam.duitqu(nom)
+      spam.duitqu(nom)
       loding()
       spam.primacash(nom)
       loding()
