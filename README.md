@@ -1,4 +1,4 @@
-# Spam Kontol buat prank Lonte kalian
+# Spam call sms with termux
 
 Tutorial:
 <pre><code>
