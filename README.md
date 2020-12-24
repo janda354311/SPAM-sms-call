@@ -8,7 +8,7 @@ pkg install python
 pkg install ruby
 pkg install git
 pkg install --upgrade pip
-git clone https://github.com/ubed354311/SPAM.git
+git clone https://github.com/ubed354311/SPAM-sms-call
 cd SPAM
 pip install -r kontol.txt
 python ubed.py
