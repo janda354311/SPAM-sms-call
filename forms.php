@@ -201,60 +201,6 @@
 			</form>
 			<!--end::FormRight-->
 		</div>
-		<div style="display:none;">
-
-<a href="https://info.halal.go.id/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://bogor.perpusnas.go.id/xampp/rtp-slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://proklimkotacirebon.com/tampilan/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://sisfo.univpgri-palembang.ac.id/full/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://cbt.univpgri-palembang.ac.id/login/slot-gacor-online/" rel="dofollow">Slot Gacor</a>
-<a href="https://bpsdm.sultengprov.go.id/assets/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://www.simpati.bpsdm.sultengprov.go.id/img/slot-gacor-hari-ini/" rel="dofollow">Slot Gacor</a>
-<a href="https://siperbangkom.bpsdm.sultengprov.go.id/css/slot-online/" rel="dofollow">Slot Gacor</a>
-<a href="https://e-letter.bpsdm.sultengprov.go.id/asset/slot-gacor-terpercaya/" rel="dofollow">Slot Gacor</a>
-<a href="https://sagata.itb.ac.id/uploads/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://rupda.itb.ac.id/storage/-/slot-hari-ini/" rel="dofollow">Slot Gacor</a>
-<a href="https://ptsp.halal.go.id/css/" rel="dofollow">Slot Gacor</a>
-<a href="https://ptsp.halal.go.id/js/demo/" rel="dofollow">Slot Gacor</a>
-<a href="https://ptsp.halal.go.id/KH/slot2023/" rel="dofollow">Slot Gacor</a>
-<a href="https://test.halal.go.id/daftar-slot/" rel="dofollow">Slot Gacor</a>
-<a href="https://test.halal.go.id/resmi/" rel="dofollow">Slot Gacor</a>
-<a href="https://simadu.poltekkes-smg.ac.id/files/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://stih-painan.ac.id/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://lms.uptdbtikdisdik.sumselprov.go.id/assets/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://pkk.merauke.go.id/.well-known/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://dama.poltekbangsby.ac.id/dashboard/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://dama.poltekbangsby.ac.id/aset/slot-gacor-hari-ini/" rel="dofollow">Slot Gacor</a>
-<a href="https://dinsos.merauke.go.id/.sass-cache/-/slot-hari-ini/" rel="dofollow">Slot Gacor</a>
-<a href="https://dinsos.merauke.go.id/berita/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://elapor.merauke.go.id/assets/css/tag/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://elapor.merauke.go.id/-/slot-terbaru/" rel="dofollow">Slot Gacor</a>
-<a href="https://pkk.merauke.go.id/.well-known/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://pkk.merauke.go.id/backend/admin/situs-rtp-slot/" rel="dofollow">Slot Gacor</a>
-<a href="https://pkk.merauke.go.id/images/-/slot88-hari-ini/" rel="dofollow">Slot Gacor</a>
-<a href="https://e-rekrutmen.mojokertokab.go.id/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="http://mbkm.ft.unsri.ac.id/public/frontend/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="http://mbkm.ft.unsri.ac.id/public/public/-/slot-hari-ini/" rel="dofollow">Slot Gacor</a>
-<a href="https://www.simpeg.kolakakab.go.id/pages/" rel="dofollow">Slot Gacor</a>
-<a href="https://e-rekrutmen.mojokertokab.go.id/rtp-slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://sidonor.pmi.okuselatankab.go.id/main/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://sidonor.pmi.okuselatankab.go.id/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://pmi.okuselatankab.go.id/wp-content/uploads/slot-hari-ini/" rel="dofollow">Slot Gacor</a>
-<a href="https://pmi.okuselatankab.go.id/wp-content/slot-gacor " rel="dofollow">Slot Gacor</a>
-<a href="https://disapaidaman.kukarkab.go.id/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://perizinankotacirebon.com/bagian/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://pemulihandlhkotacirebon.com/css/slot-gacor-maxwin/" rel="dofollow">Slot Gacor</a>
-<a href="https://ecp.tnbilsas.com.my/storage/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://dkkp.pip-semarang.ac.id/files/slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="https://sp.sidomuncul.co.id/sp_mon/mod_user/Slot-Gacor-Hari-Ini/" rel="dofollow">Slot Gacor</a>
-<a href="https://sehati.halal.go.id/login/" rel="dofollow">Slot Gacor</a>
-<a href="http://pintar.jatengprov.go.id/packages/slot-hari-ini/" rel="dofollow">Slot Gacor</a>
-<a href="http://pintar.jatengprov.go.id/public/uploads/icon/login-slot-gacor/" rel="dofollow">Slot Gacor</a>
-<a href="http://pintar.jatengprov.go.id/public/uploads/users/slot-gacor-resmi/" rel="dofollow">Slot Gacor</a>
-<a href="https://sehati.halal.go.id/login/" rel="dofollow">Slot Gacor</a>
-<a href="https://www.simpeg.kolakakab.go.id/siaga/" rel="dofollow">Rtp slot</a>
-<a href="https://disapaidaman.kukarkab.go.id/rtp-slot-gacor/" rel="dofollow">Rtp slot</a>
-<a href="https://sp.sidomuncul.co.id/sp_mon/rtp-slot/" rel="dofollow">Rtp Slot</a>
 
 	</div>
 <?php $this->endSection() ?>
