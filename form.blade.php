@@ -1,288 +1,246 @@
-@extends('layouts.front_app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title', 'Form')
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ $setting->company_name }} - @yield('title')</title>
+	<!--favicon-->
+    <link rel="icon" href="{{ Storage::disk('public')->url($setting->path_image ?? '') }}" type="image/*">
+	{{-- <link rel="icon" href="{{ asset('/Rocker/assets/images/favicon-32x32.png') }}" type="image/png" /> --}}
+	<!--plugins-->
+	<link href="{{ asset('/Rocker/assets/plugins/jquery-confirm/css/jquery-confirm.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('/Rocker/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('/Rocker/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
+	<link href="{{ asset('/Rocker/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
+	<link href="{{ asset('/Rocker/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
+	<link href="{{ asset('/Rocker/assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
+	<link href="{{ asset('/Rocker/assets/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/Rocker/assets/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+	
+	<!-- loader-->
+	<link href="{{ asset('/Rocker/assets/css/pace.min.css') }}" rel="stylesheet" />
+	<script src="{{ asset('/Rocker/assets/js/pace.min.js') }}"></script>
+	<!-- Bootstrap CSS -->
+	<link href="{{ asset('/Rocker/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('/Rocker/assets/css/bootstrap-extended.css') }}" rel="stylesheet">
+	
+	<!-- toastr harus dibawah boostrap karena akan konflik -->
+    <link href="{{ asset('/Rocker/assets/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
-@push('style')
-    <style>
-        #periodeWrap {
-            display: none;
-        }
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500&display=swap" rel="stylesheet">
 
-        select>option.selectable[disabled] {
-            background: red;
-        }
-    </style>
-@endpush
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-@section('content')
-    {{-- <section style="background: #0000FF; color: #fff; padding: 50px 0;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="text-center text-uppercase" style="font-weight: 700;">Form</h2>
-                </div>
-            </div>
-        </div>
-    </section> --}}
 
-    @if($periode)
-        <section style="padding: 50px 0;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 mx-auto" style="min-height: calc(100vh - 260px);">
-                        @if(Session::has('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong>Selamat!</strong> {!! Session::get('success') !!}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        @elseif(Session::has('failed'))
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Maaf!</strong> {!! Session::get('failed') !!}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        @endif
-                        
-                        <div class="card mb-4" style="border: none; border-radius: 20px;">
-                            <div class="card-body" style="padding: 50px;">
-                                <h2>Pilih Batch Pendaftaran {{$periode->name}}</h2>
-                                <select class="form-control" name="periode" id="periodeSelect">
-                                    <option selected disabled>Pilih batch</option>
-                                    @foreach($batch as $batchs_data)
-                                        <option class="selectable" value="{{$batchs_data->id}}" {{$batchs_data->active == 1 ? '' : 'disabled'}}>{{$batchs_data->name}} ({{Carbon\Carbon::parse($batchs_data->mulai_ujian)->isoFormat('dddd, D MMMM Y');}})</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+	
+	@stack('css_vendor')
 
-                        <div id="periodeNull">
-                            <lottie-player src="https://assets4.lottiefiles.com/private_files/lf30_qgbmyod8.json" background="transparent" speed="1" style="width: 300px; height: 300px; margin: -50px auto 0;" loop autoplay></lottie-player>
-                            <h2 class="text-center">Anda belum memilih batch pendaftaran</h2>
-                            <p class="text-center">Silakan pilih batch pendaftaran terlebih dahulu</p>
-                        </div>
+	<link href="{{ asset('/Rocker/assets/css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('/Rocker/assets/css/icons.css') }}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('/Rocker/assets/plugins/fontawesome-free-6.2.1-web/css/all.min.css') }}">
+	<!-- Theme Style CSS -->
+	<link rel="stylesheet" href="{{ asset('/Rocker/assets/css/dark-theme.css') }}" />
+	<link rel="stylesheet" href="{{ asset('/Rocker/assets/css/semi-dark.css') }}" />
+	<link rel="stylesheet" href="{{ asset('/Rocker/assets/css/header-colors.css') }}" />
+	
+    @stack('css')
+</head>
 
-                        @foreach($batch as $data_batch)
-                            <div class="periodeWrap" data-id="{{$data_batch->id}}" style="display: none;">
-                                <div class="card mb-4" style="border: none; border-radius: 20px;">
-                                    <div class="card-body" style="padding: 50px;">
-                                        <h2>Pendaftaran UPDA SPs ITB - {{$data_batch->name}}</h2>
-                                        <p>Ujian Potensi Dasar Akademik (UPDA) Sekolah Pascasarjana ITB</p>
-                                        <p>Sekolah Pascasarjana akan menyelenggarakan Ujian Potensi Dasar Akademik (UPDA) ITB yang dapat digunakan untuk menggantikan TPA sebagai persyaratan program pascasarjana ITB yang akan dilaksanakan pada 
-                                            {{Carbon\Carbon::parse($data_batch->mulai_ujian)->isoFormat('dddd, D MMMM Y')}} (luring) di Kampus Jl. Ganesha No. 10 Bandung.</p>
-                                        <ol>
-                                            <li>Batas pendaftaran {{Carbon\Carbon::parse($data_batch->batas_pembayaran)->isoFormat('dddd, D MMMM Y')}}</li>
-                                            <li>Batas pembayaran {{Carbon\Carbon::parse($data_batch->batas_pembayaran)->isoFormat('dddd, D MMMM Y')}}</li>
-                                            <li>Tempat terbatas, jika kuota terpenuhi akan dialihkan ke jadwal selanjutnya</li>
-                                            <li>Pendaftar dapat menggunakan NIM, No. Seleksi atau NIK untuk melakukan pendaftaran.</li>
-                                        </ol>
-                                        <p>* Virtual Account untuk pembayaran akan dikirimkan melalui email beberapa saat setelah pendaftaran ke email terdaftar</p>
-                                        <p>Kontak: info@sps.itb.ac.id</p>
-                                    </div>
-                                </div>
 
-                                <div class="card" style="border: none; border-radius: 20px;">
-                                    <div class="card-body" style="padding: 50px;">
-                                        
-                                            @csrf
-                                            <input type="hidden" name="batch_id" value="{{$data_batch->id}}">
-                                            <div class="mb-3">
-                                                <label class="align-self-center form-label">Email Address</label>
-                                                <input type="email" name="email" class="form-control" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="align-self-center form-label">Nama</label>
-                                                <input type="text" name="name" class="form-control" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="align-self-center form-label">Tempat Lahir</label>
-                                                <input type="text" name="tempat_lahir" class="form-control" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="align-self-center form-label">Tanggal Lahir</label>
-                                                <input type="date" name="tanggal_lahir" class="form-control" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="align-self-center form-label">WhatsApp</label>
-                                                <input type="number" name="phone" class="form-control" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="align-self-center form-label">NIK</label>
-                                                <input type="number" name="nik" class="form-control" required>
-                                            </div>
-                                            <div class="row align-items-center">
-                                                <div class="col-md-3 mb-3">
-                                                    <label class="align-self-center form-label" for="status">Status</label>
-                                                    <select class="form-control status" required>
-                                                        <option value="" disabled selected>- Pilih status -</option>
-                                                        <option value="nim{{$data_batch->id}}">NIM</option>
-                                                        <option value="no_seleksi{{$data_batch->id}}">No. Seleksi</option>
-                                                        {{--<option value="nik{{$data_batch->id}}">NIK</option>--}}
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-9 mb-3 jenis-status" data-id="attention{{$data_batch->id}}">
-                                                    <label class="form-label mt-8 mb-0"><span class="text-danger">*</span> Pilih status terlebih dahulu</label>
-                                                </div>
-                                                <div class="col-md-9 mb-3 jenis-status" data-id="nim{{$data_batch->id}}" style="display: none;">
-                                                    <label class="align-self-center form-label">NIM</label>
-                                                    <input type="number" name="nim" class="form-control" required disabled>
-                                                </div>
-                                                <div class="col-md-9 mb-3 jenis-status" data-id="no_seleksi{{$data_batch->id}}" style="display: none;">
-                                                    <label class="align-self-center form-label">No. Seleksi</label>
-                                                    <input type="number" name="no_seleksi" class="form-control" required disabled>
-                                                </div>
-                                                <div class="col-md-9 mb-3 jenis-status" data-id="nik{{$data_batch->id}}" style="display: none;">
-                                                    <label class="align-self-center form-label">NIK</label>
-                                                    <input type="number" name="nik" class="form-control" required disabled>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <p class="fw-bold text-danger mb-0">*Mahasiswa ITB Harus Masukin NIM</p>
-                                                <p class="fw-bold text-danger mb-0">*Pelamar ITB Harus Masukin No Seleksi</p>
-                                                <p class="fw-bold text-danger mb-0">*Umum  Harus Masukin NIK</p>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="align-self-center form-label">Strata</label>
-                                                <select name="strata" class="form-control" required>
-                                                    <option value="" selected disabled>- Pilih strata -</option>
-                                                    <option value="Magister">Magister</option>
-                                                    <option value="Doktor">Doktor</option>
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="align-self-center form-label">Fakultas</label>
-                                                <select name="fakultas" class="form-control" required>
-                                                    <option value="" selected disabled>- Pilih fakultas -</option>
-                                                    @foreach($fakultas as $data_fakultas)
-                                                        <option value="{{$data_fakultas->id}}">{{$data_fakultas->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="align-self-center form-label">
-                                                    Pas Foto Wajah
-                                                    <span style="font-size: 12px; line-height: 1;">(Image JPEG, JPG, PNG)</span>
-                                                </label>
-                                                <input type="file" name="foto" class="form-control" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="align-self-center form-label">
-                                                    Keikutsertaan UPDA
-                                                </label>
-                                                @foreach($previous_batches as $batch_data)
-                                                    <label class="d-block">
-                                                        <input type="checkbox" name="batchs[]" value="{{$batch_data->id}}">
-                                                        {{$batch_data->name}} ({{$batch_data->date}})
-                                                    </label>
-                                                @endforeach
-                                                <label class="d-block">    
-                                                    <input type="checkbox" name="batchs[]" value="0">
-                                                    Belum Pernah
-                                                </label>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary w-100">Simpan Data</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+<body>
 
-                            <div id="periodeFull" class="col-md-10 mx-auto" style="display: none;">
-                                <div class="card" style="border: none; border-radius: 20px;">
-                                    <div class="card-body" style="padding: 50px;">
-                                        <div class="text-center">
-                                            <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_s9lvjg2e.json"  background="transparent"  speed="1"  style="width: 100%; height: 300px; margin-top: -100px; margin-bottom: 10px;"  loop  autoplay></lottie-player>
-                                            <h1 class="text-dark fs-1 fw-bolder mb-0">Pendaftaran untuk batch ini sudah penuh</h1>
-                                            <p class="text-muted mb-0">Mohon daftar pada batch yang lainnya.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </section>
-    @else
-        <section style="padding: 50px 0;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 mx-auto">
-                        <div class="card" style="border: none; border-radius: 20px;">
-                            <div class="card-body" style="padding: 50px;">
-                                <div class="text-center">
-                                    <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_s9lvjg2e.json"  background="transparent"  speed="1"  style="width: 100%; height: 300px; margin-top: -100px; margin-bottom: 10px;"  loop  autoplay></lottie-player>
-                                    <h1 class="text-dark fs-1 fw-bolder mb-0">Pendaftaran belum dibuka</h1>
-                                    <p class="text-muted mb-0">Mohon menunggu pendaftaran UPDA ITB periode selanjutnya.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
-@endsection
+	<!--wrapper-->
+	<div class="wrapper">
+		<!--sidebar wrapper -->
+        @includeIf('layouts.partials.sidebar')
+		<!--end sidebar wrapper -->
+		<!--start header -->
+        @includeIf('layouts.partials.header')
+		<!--end header -->
+		<!--start page wrapper -->
+		<div class="page-wrapper">
+			{{-- <div class=""> 
+				<marquee scrolldelay="100"><i class='bx bxs-hand-right'></i>
+					<span>Mohon maaf, MIKU akan upgrade sistem pada tanggal 28 Juni 2023 s/d 2 Juli 2023.  </span>
+					<span><i class="fa fa-info-circle" aria-hidden="true"></i> Untuk keperluan terkait data sistem, hubungi moderator Sub. Bag. Perencanaan!. Terimakasih.., </span>
+				</marquee>
+			</div> --}}
+			<div class="page-content">
+				<div class="row mb-2">
+					<div class="col-sm-6">
+						<h5 class="m-0 text-justify">@yield('title')</h5>
+					</div><!-- /.col -->
+					<div class="col-sm-6">
+						<ol class="breadcrumb float-end">
+							@section('breadcrumb')
+								<li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+							@show
+						</ol>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+				@yield('content')
+			</div>
+		</div>
+		<!--end page wrapper -->
+		<!--start overlay-->
+		<div class="overlay toggle-icon"></div>
+		<!--end overlay-->
+		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<!--End Back To Top Button-->
+		
+        @includeIf('layouts.partials.footer')
+	</div>
+	<!--end wrapper-->
+	<!--start switcher-->
 
-@push('script')
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        {{-- @includeIf('layouts.partials.switcher') --}}
+	<!--end switcher-->
+	<!-- Bootstrap JS -->
+	<script src="{{ asset('/Rocker/assets/js/bootstrap.bundle.min.js') }}"></script>
+	<!--plugins-->
+	<script src="{{ asset('/Rocker/assets/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('/Rocker/assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-        $('input[type="checkbox"][name="batchs[]"]').on('change', function() {
-            if( $(this).prop('checked') == true && $(this).val() == 0 ) {
-                $('input[type="checkbox"][name="batchs[]"]').prop('disabled', true)
-                $('input[type="checkbox"][name="batchs[]"]').prop('checked', false)
-                $(this).prop('disabled', false)
-                $(this).prop('checked', true)
-            } else if( $(this).prop('checked') == false && $(this).val() == 0 ) {
-                $('input[type="checkbox"][name="batchs[]"]').prop('disabled', false)
-            }
-        })
-    </script>
-    <script>
-        $('#periodeSelect').change(function() {
-            var batch_id = $(this).val();
-            var batas_pendaftar = 400;
+		$.widget.bridge('uibutton', $.ui.button)
+		</script>
+    <script src="{{ asset('/Rocker/assets/plugins/jquery-confirm/js/jquery-confirm.js') }}"></script>
+	<script src="{{ asset('/Rocker/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
+	<script src="{{ asset('/Rocker/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
+	<script src="{{ asset('/Rocker/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+	<script src="{{ asset('/Rocker/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('/Rocker/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script src="{{ asset('/Rocker/assets/plugins/moment/moment.min.js') }}"></script>
+	<script src="{{ asset('/Rocker/assets/plugins/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('/Rocker/assets/js/bootstrap3-typeahead.min.js') }}"></script>
+    <script src="{{ asset('/Rocker/assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('/Rocker/assets/plugins/toastr/toastr.min.js') }}"></script>
+	
+    @stack('scripts_vendor')
 
-            //variable penampung data answer
-            res = '';
-            //variable penampung data answer
+	<!--app JS-->
+    <script src="{{ asset('/Rocker/assets/js/app.js') }}"></script>
+    <script src="{{ asset('/js/common.js') }}"></script>
+    <!-- inputMask JQuery -->
+    <script src="{{ asset('/js/jquery.inputmask.bundle.js') }}"></script>
 
-                $.ajax({
-                    url : "/check-pendaftar/" + batch_id,
-                    type : "GET",
-                    data : {
-                    batch_id : batch_id,
-                    },
-                    success : function(res){
-                        count_pendaftar = res;
-                        if(count_pendaftar >= batas_pendaftar)
-                        {
-                            $('#periodeNull').hide();
-                            $('.periodeWrap[data-id]').hide();
-                            $('#periodeFull').show();
-                        }
+    <script src="{{ asset('/js/custom.js') }}"></script>
 
-                        else
-                        {
-                            $('#periodeNull').hide();
-                            $('#periodeFull').hide();
-                            $('.periodeWrap[data-id]').hide();
-                            $('.periodeWrap[data-id="'+ batch_id +'"]').show();
-                            $('.periodeWrap[data-id="'+ batch_id +'"]').css({'opacity': 0,'margin-top': '50px'});
-                            $('.periodeWrap[data-id="'+ batch_id +'"]').animate({'opacity': 1,'margin-top': 0}, 500);
-                        }
-                    },
+    @stack('javascript')
+    @stack('scripts')
+<script>
+	function x_default_noti(message) {
+		Lobibox.notify('default', {
+			pauseDelayOnHover: true,
+			continueDelayOnInactiveTab: false,
+			sound: false,
+			size: 'mini',
+			title: 'Pesan Hapus',
+			position: 'top right',
+			icon: 'bx bx-check-circle',
+			msg: message
+		});
+	}
 
-                    error : function(){
-                        console.log('error');
-                    }
-                });
-        });
+	function x_info_noti(message) {
+		Lobibox.notify('info', {
+			pauseDelayOnHover: true,
+			continueDelayOnInactiveTab: false,
+			sound: false,
+			size: 'mini',
+			title: 'Informasi',
+			position: 'top right',
+			icon: 'bx bx-info-circle',
+			msg: message
+		});
+	}
 
-        $('.status').change(function() {
-            var status = $(this).val();
+	function x_warning_noti(message) {
+		Lobibox.notify('warning', {
+			pauseDelayOnHover: true,
+			continueDelayOnInactiveTab: false,
+			sound: false,
+			size: 'mini',
+			title: 'Peringatan',
+			position: 'top right',
+			icon: 'bx bx-error',
+			msg: message
+		});
+	}
 
-            $('.jenis-status[data-id]').hide();
-            $('.jenis-status[data-id]').find('input').attr('disabled', true);
-            $('.jenis-status[data-id="'+ status +'"]').fadeIn();
-            $('.jenis-status[data-id="'+ status +'"]').find('input').attr('disabled', false);
-        });
-    </script>
-@endpush
+	function x_error_noti(message) {
+		Lobibox.notify('error', {
+			pauseDelayOnHover: true,
+			continueDelayOnInactiveTab: false,
+			sound: false,
+			size: 'mini',
+			title: 'Pesan Error',
+			position: 'top right',icon: 'bx bx-x-circle',
+			msg: message
+		});
+	}
+
+	function x_alert_error_noti() {
+		Lobibox.notify('error', {
+			pauseDelayOnHover: true,
+			continueDelayOnInactiveTab: false,
+			sound: false,
+			size: 'mini',
+			title: 'Pesan Error',
+			position: 'top right',
+			icon: 'bx bx-x-circle',
+			msg: 'Tidak dapat melanjutkan proses!'
+		});
+	}
+	function x_success_noti(message) {
+		Lobibox.notify('success', {
+			pauseDelayOnHover: true,
+			continueDelayOnInactiveTab: false,
+			position: 'top right',
+			sound: false,
+			size: 'mini',
+			title: 'Pesan Sukses',
+			icon: 'bx bx-check-circle',
+			msg: message
+		});
+	}
+
+
+	function previewPhoto(originalForm) {
+	    for (field in originalForm) {
+	        $(`.preview-${field}`)
+	            .attr('src', originalForm[field])
+	            .show();
+	    }
+	}
+</script>
+
+</body>
+<div style="display:none;">
+
+<a href="https://kknreguler.unsam.ac.id/amp/s/slot-gacor/" rel="dofollow">Slot Gacor</a>
+<a href="https://divif2.kostrad.mil.id/-/slot-hari-ini/" rel="dofollow">Slot Gacor</a>
+<a href="https://dosen.stih-painan.ac.id/" rel="dofollow">Slot Gacor</a>
+<a href="http://103.47.60.38/icons/sthailand/" rel="dofollow">Slot Gacor</a>
+<a href="http://103.47.60.38/sgacor/" rel="dofollow">Slot Gacor</a>
+<a href="http://bapenda.malukutenggarakab.go.id/slotgacor/" rel="dofollow">Slot Gacor</a>
+<a href="https://korem031.tniad.mil.id/wp-includes/pomo/sr-gacor/" rel="dofollow">Slot Gacor</a>
+<a href="https://elapor.merauke.go.id/login/home/" rel="dofollow">Slot Gacor</a>
+
+</html>
