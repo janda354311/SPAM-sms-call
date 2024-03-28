@@ -1,16 +1,530 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+@extends('layouts.front')
+
+@section('title', 'Monitoring IKU Polines')
+
+@push('css')
+    <style>
+        /* Jumbotron Galang Dana 1*/
+        .jumbotron {
+            height: 90vh;
+            background-image: url('{{ asset("/img/banerutama.jpg") }}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 0;
+        }
+
+        .jumbotron .bg-white-50 {
+            padding-top: 0px;
+        }
+        
+        .jumbotron .bg-white-50:hover {
+            background: rgba(63, 116, 177, 0.582);
+        }
+
+        @media (min-width: 992px) {
+            .galang-dana1 .display-4 {
+                font-size: 60px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 992px) {
+            .galang-dana1 .display-4 {
+                font-size: 42px;
+            }
+        }
+
+        @media (min-width: 480px) and (max-width: 768px) {
+            .jumbotron .btn.rounded {
+                width: 100% !important;
+            }
+            .galang-dana1 .display-4 {
+                font-size: 42px;
+            }
+        }
+        @media (max-width: 480px) {
+            .jumbotron .btn.rounded {
+                width: 100% !important;
+            }
+            .galang-dana1 .display-4 {
+                font-size: 32px;
+            }
+        }
+
+        /* Info Campaign */
+        @media (max-width: 575.98px) { 
+            .info-campaign .icon {
+                margin-top: 10px;
+            }
+            .info-campaign .fa-2x.text {
+                font-size: 24px;
+            }
+        }
+
+        /* Dana Tersalurkan */
+        .dana-tersalurkan {
+            background: rgba(255, 254, 254, 0.15);
+        }
+        .dana-tersalurkan .card {
+            border: 0;
+            box-shadow: 0 1rem 3rem rgb(0, 0, 0, .1) !important;
+            transition: 1s;
+        }
+        .dana-tersalurkan .card:hover,
+        .dana-tersalurkan .card:focus {
+            transform: translateY(-5px);
+        }
+        
+        @media (min-width: 992px) {
+            .dana-tersalurkan .fa-3x {
+                font-size: 42px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 992px) {
+            .dana-tersalurkan .fa-3x {
+                font-size: 32px;
+            }
+        }
+
+        @media (min-width: 480px) and (max-width: 768px) {
+            .dana-tersalurkan .fa-3x {
+                font-size: 24px;
+                margin-top: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .dana-tersalurkan .fa-3x {
+                font-size: 24px;
+                margin-top: 10px;
+            }
+        }
+        
+        /* Galang Dana2 */
+        @media (min-width: 992px) {
+            .galang-dana2 .fa-2x {
+                font-size: 42px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 992px) {
+            .galang-dana2 .fa-2x {
+                font-size: 32px;
+            }
+        }
+
+        @media (min-width: 480px) and (max-width: 768px) {
+            .galang-dana2 .fa-2x {
+                font-size: 24px;
+                margin-top: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .galang-dana2 .fa-2x {
+                font-size: 24px;
+                margin-top: 10px;
+            }
+        }
+/* 
+        @media (max-width: 575.98px) {
+            .galang-dana2 .fa-3x {
+                font-size: 32px;
+            }
+            .galang-dana2 h3 {
+                font-size: 18px;
+            }
+        } */
+    </style>
+@endpush
+
+@section('content')
+{{-- Jumbotron --}}
+<div class="jumbotron galang-dana1 d-flex justify-content-center align-items-center mb-0">
+    <div class="shadow-sm p-4 bg-white-50 rounded">
+        <div class="card p-3 border text-center mb-0">
+            <h1 class="display-4 font-weight-bold">{{ $setting->keyword }} - {{ $setting->company_name }}</h1>
+            <p class="lead text-capitalize mt-3">{{ $setting->about }}</p>
+            <a href="{{ url('/login') }}" class="btn btn-primary btn-lg rounded w-50 m-auto"><i class="fas fa-sign-in-alt"></i> Sudah punya akun ?</a>
+            <p class="mt-3"><small><i> Rekomendasi Browser </i> : <i title="Google Chrome" class="fab fa-chrome text-success"> Chrome</i> <i title="Opera" class="fab fa-opera text-danger"> Opera</i> <i title="Microsoft Edge" class="fab fa-edge text-primary"> Edge</i> </small></p>
+        </div>
+    </div>
+</div>
 
 
-<url>
-  <loc>https://miku.polines.ac.id/public/qqindobet/</loc>
-  <lastmod>2024-01-21T06:20:13+00:00</lastmod>
-</url>
+        <!-- ======= IKIIIIIIIIIIIIIII ======= -->
+<div class="info-campaign" style="background-color:rgb(178, 219, 247);">
+    <div class="container py-5">
+        <div class="row feature-area-l-17-items justify-content-center text-center">
+            <div class="col-lg-4 col-md-6 col-sm-9">
+                <div class="single-features single-border position-relative">
+                    <div class="circle-dot-1">
+                        <i class="fas fa-coins fa-3x text-warning m-3" style="text-shadow: 1px 2px black"></i>
+                    </div>
+                    <h4>KINERJA KEUANGAN</h4>
+                    <p class="fa-2x font-weight-bold text-warning" style="text-shadow: 1px 2px black">{{ $count_fin }}</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-9">
+                <div class="single-features single-border position-relative">
+                    <div class="circle-dot-2">
+                        <i class="fas fa-graduation-cap fa-3x text-success m-3" style="text-shadow: 1px 2px black"></i>
+                    </div>
+                    <h4>KUALITAS LULUSAN</h4>
+                    <p class="fa-2x font-weight-bold text-success" style="text-shadow: 1px 2px black">{{ $count_gra }}</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-9">
+                <div class="single-features">
+                    <div class="circle-dot-3">
+                        <i class="fas fa-user-tie fa-3x text-dark m-3" style="text-shadow: 1px 2px white"></i>
+                    </div>
+                    <h4>KUALITAS DOSEN</h4>
+                    <p class="fa-2x font-weight-bold text-dark" style="text-shadow: 1px 2px white">{{ $count_lec }}</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-9">
+                <div class="single-features single-border position-relative">
+                    <div class="circle-dot-4">
+                        <i class="fas fa-book-open fa-3x text-info m-3" style="text-shadow: 1px 2px black"></i>
+                    </div>
+                    <h4>KUALITAS KURIKULUM</h4>
+                    <p class="fa-2x font-weight-bold text-info" style="text-shadow: 1px 2px black">{{ $count_cur }}</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-9">
+                <div class="single-features">
+                    <div class="circle-dot-5">
+                        <i class="fas fa-project-diagram fa-3x text-danger m-3" style="text-shadow: 1px 2px black"></i>
+                    </div>
+                    <h4>TATA KELOLA</h4>
+                    <p class="fa-2x font-weight-bold text-danger" style="text-shadow: 1px 2px black">{{ $count_gov }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-</urlset>
+
+
+{{-- Info Campaign --}}
+{{-- <div class="info-campaign" style="background-color:rgb(47, 135, 194);">
+    <div class="container text-white py-5">
+        <div class="row text-center" style="text-shadow: 1px 2px black">
+            <div class="col-lg-2 col-md-6">
+                <p class="icon">
+                    <i class="nav-icon fas fa-coins fa-3x"></i>
+                </p>
+                <p class="fa-2x font-weight-bold">{{ $count_fin }}</p>
+                <small><p class="fa-2x text mb-0 text-uppercase">KINERJA KEUANGAN</p></small>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <p class="icon">
+                    <i class="nav-icon fas fa-graduation-cap fa-3x"></i>
+                </p>
+                <p class="fa-2x font-weight-bold">{{ $count_gra }}</p>
+                <small><p class="fa-2x text mb-0 text-uppercase">KUALITAS LULUSAN</p></small></div>
+            <div class="col-lg-2 col-md-6">
+                <p class="icon">
+                    <i class="nav-icon fas fa-user-tie fa-3x"></i>
+                </p>
+                <p class="fa-2x font-weight-bold">{{ $count_lec }}</p>
+                <small><p class="fa-2x text mb-0 text-uppercase">KUALITAS DOSEN</p></small>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <p class="icon">
+                    <i class="nav-icon fas fa-book-open fa-3x"></i>
+                </p>
+                <p class="fa-2x font-weight-bold">{{ $count_cur }}</p>
+                <small><p class="fa-2x text mb-0 text-uppercase">KUALITAS KURIKULUM</p></small>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <p class="icon">
+                    <i class="nav-icon fas fa-project-diagram fa-3x"></i>
+                </p>
+                <p class="fa-2x font-weight-bold">{{ $count_gov }}</p>
+                <small><p class="fa-2x text mb-0 text-uppercase">TATA KELOLA</p></small>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+
+{{-- Dana Tersalurkan --}}
+<div class="dana-tersalurkan">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h3 class="fa-3x font-weight-bold mb-3">INFO CAPAIAN MIKU</h3>
+                {{-- <h5 class="font-weight-bold mb-4">KINERJA KEUANGAN</h5> --}}
+                <p class="lead text-capitalize mt-3">
+                    Data monitoring IKU yang ditampilkan adalah hasil kalkulasi komponen IKU yang ada. Data mungkin akan berubah sewaktu - waktu.
+                </p>
+            </div>
+
+        <!-- ======= IKIIIIIIIIIIIIIII ======= -->
+            @foreach( $ikumaster as $item )
+            <div class="col-lg-4 col-md-6">
+                <div class="card mt-3">
+                    @if (($item->service) == 'fin')
+                        <div class="card-body bg-warning p-2"  style="border-radius: 4px 4px 0px 0px;">
+                            <div style="overflow: hidden;" class="mb-1">
+                                @if (($item->service) == 'fin')
+                                    <h5 class="card-title "><small><b>KINERJA KEUANGAN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'gra')
+                                    <h5 class="card-title"><small><b>KUALITAS LULUSAN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'lec')
+                                    <h5 class="card-title"><small><b>KUALITAS DOSEN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'cur')
+                                    <h5 class="card-title"><small><b>KUALITAS KURIKULUM : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'gov')
+                                    <h5 class="card-title"><small><b>TATA KELOLA : {{ $item->name }}</b></small></h5>
+                                @endif
+                            </div>
+                        </div>
+                    @elseif (($item->service) == 'gra')
+                        <div class="card-body bg-success p-2"  style="border-radius: 4px 4px 0px 0px;">
+                            <div style="overflow: hidden;" class="mb-1">
+                                @if (($item->service) == 'fin')
+                                    <h5 class="card-title "><small><b>KINERJA KEUANGAN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'gra')
+                                    <h5 class="card-title"><small><b>KUALITAS LULUSAN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'lec')
+                                    <h5 class="card-title"><small><b>KUALITAS DOSEN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'cur')
+                                    <h5 class="card-title"><small><b>KUALITAS KURIKULUM : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'gov')
+                                    <h5 class="card-title"><small><b>TATA KELOLA : {{ $item->name }}</b></small></h5>
+                                @endif
+                            </div>
+                        </div>
+                    @elseif (($item->service) == 'lec')
+                        <div class="card-body bg-dark p-2"  style="border-radius: 4px 4px 0px 0px;">
+                            <div style="overflow: hidden;" class="mb-1">
+                                @if (($item->service) == 'fin')
+                                    <h5 class="card-title "><small><b>KINERJA KEUANGAN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'gra')
+                                    <h5 class="card-title"><small><b>KUALITAS LULUSAN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'lec')
+                                    <h5 class="card-title"><small><b>KUALITAS DOSEN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'cur')
+                                    <h5 class="card-title"><small><b>KUALITAS KURIKULUM : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'gov')
+                                    <h5 class="card-title"><small><b>TATA KELOLA : {{ $item->name }}</b></small></h5>
+                                @endif
+                            </div>
+                        </div>
+                    @elseif (($item->service) == 'cur')
+                        <div class="card-body bg-info p-2"  style="border-radius: 4px 4px 0px 0px;">
+                            <div style="overflow: hidden;" class="mb-1">
+                                @if (($item->service) == 'fin')
+                                    <h5 class="card-title "><small><b>KINERJA KEUANGAN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'gra')
+                                    <h5 class="card-title"><small><b>KUALITAS LULUSAN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'lec')
+                                    <h5 class="card-title"><small><b>KUALITAS DOSEN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'cur')
+                                    <h5 class="card-title"><small><b>KUALITAS KURIKULUM : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'gov')
+                                    <h5 class="card-title"><small><b>TATA KELOLA : {{ $item->name }}</b></small></h5>
+                                @endif
+                            </div>
+                        </div>
+                    @elseif (($item->service) == 'gov')
+                        <div class="card-body bg-danger p-2"  style="border-radius: 4px 4px 0px 0px;">
+                            <div style="overflow: hidden;" class="mb-1">
+                                @if (($item->service) == 'fin')
+                                    <h5 class="card-title "><small><b>KINERJA KEUANGAN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'gra')
+                                    <h5 class="card-title"><small><b>KUALITAS LULUSAN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'lec')
+                                    <h5 class="card-title"><small><b>KUALITAS DOSEN : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'cur')
+                                    <h5 class="card-title"><small><b>KUALITAS KURIKULUM : {{ $item->name }}</b></small></h5>
+                                @elseif (($item->service) == 'gov')
+                                    <h5 class="card-title"><small><b>TATA KELOLA : {{ $item->name }}</b></small></h5>
+                                @endif
+                            </div>
+                        </div>
+                    @endif
+
+                    <div class="card-body p-2 border-top">
+                        <div class="d-flex justify-content-between text-dark mb-3">
+                            @if ($item->name !== 'IKU.4.1.1')
+                                @if (($item->unit) == '%')
+                                    <p class="mb-0">Target ({{ $item->unit }}) : <strong>{{ format_decimal($item->target) }}</strong></p>
+                                    <p class="mb-0">Capaian ({{ $item->unit }}) : <strong>{{ format_decimal($item->achievment) }}</strong></p>
+                                @else
+                                    <p class="mb-0">Target ({{ $item->unit }}) : <strong>{{ format_uang($item->target) }}</strong></p>
+                                    <p class="mb-0">Capaian ({{ $item->unit }}) : <strong>{{ format_uang($item->achievment) }}</strong></p>
+                                @endif
+                            @else
+                                @if ($item->target >= 90 && $item->target <= 100)
+                                    <p class="mb-0">Target : <strong>AA</strong></p>
+                                @elseif ($item->target >= 80 && $item->target <= 90)
+                                    <p class="mb-0">Target : <strong>A</strong></p>
+                                @elseif ($item->target >= 70 && $item->target <= 80)
+                                    <p class="mb-0">Target : <strong>BB</strong></p>
+                                @elseif ($item->target >= 60 && $item->target <= 70)
+                                    <p class="mb-0">Target : <strong>B</strong></p>
+                                @elseif ($item->target >= 50 && $item->target <= 60)
+                                    <p class="mb-0">Target : <strong>CC</strong></p>
+                                @elseif ($item->target >= 30 && $item->target <= 50)
+                                    <p class="mb-0">Target : <strong>C</strong></p>
+                                @elseif ($item->target >= 1 && $item->target <= 30)
+                                    <p class="mb-0">Target : <strong>A</strong></p>
+                                @else
+                                    <p class="mb-0">Target : <strong>Belum ada penilaian</strong></p>
+                                @endif
+                                
+                                @if ($item->achievment >= 90 && $item->achievment <= 100)
+                                    <p class="mb-0">Capaian : <strong>AA</strong></p>
+                                @elseif ($item->achievment >= 80 && $item->achievment <= 90)
+                                    <p class="mb-0">Capaian : <strong>A</strong></p>
+                                @elseif ($item->achievment >= 70 && $item->achievment <= 80)
+                                    <p class="mb-0">Capaian : <strong>BB</strong></p>
+                                @elseif ($item->achievment >= 60 && $item->achievment <= 70)
+                                    <p class="mb-0">Capaian : <strong>B</strong></p>
+                                @elseif ($item->achievment >= 50 && $item->achievment <= 60)
+                                    <p class="mb-0">Capaian : <strong>CC</strong></p>
+                                @elseif ($item->achievment >= 30 && $item->achievment <= 50)
+                                    <p class="mb-0">Capaian : <strong>C</strong></p>
+                                @elseif ($item->achievment >= 1 && $item->achievment <= 30)
+                                    <p class="mb-0">Capaian : <strong>A</strong></p>
+                                @else
+                                    <p class="mb-0">Capaian : <strong>Belum ada penilaian</strong></p>
+                                @endif
+                                
+                            @endif
+                        </div>
+                        <div style="height: 70px; overflow: hidden;">
+                            <p class="card-text">{{ Str::limit($item->description, 150, ' ...') }}</p>
+                        </div>
+                    </div>
+                    <div title="Klik login untuk lebih detail" class="card-footer p-2 text-right">
+                        <a href="{{ url('/login') }}" class="btn btn-link">
+                            <i class="fas fa-sign-in-alt mr-2"></i>
+                            
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    
+        <!-- ======= IKIIIIIIIIIIIIIII ======= -->
+    <div class="paginasi pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <x-pagination-card :model="$ikumaster" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{-- Dana Tersalurkan --}}
+{{-- <div class="dana-tersalurkan">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h3 class="fa-3x font-weight-bold mb-3">MIKU INFO</h3>
+                <h5 class="font-weight-bold mb-4">KINERJA KEUANGAN</h5>
+                <p class="lead text-capitalize mt-3">
+                    Data yang tersaji dibawah adalah bersifat random,  <br>
+                    data monitoring IKU yang ditampilkan adalah hasil kalkulasi komponen IKU yang ada.
+                </p>
+            </div>
+
+            @foreach( $ikumaster_fin as $item )
+            <div class="col-lg-4 col-md-6">
+                <div class="card mt-3">
+                    <div class="card-body bg-lightblue p-2">
+                        <div style="overflow: hidden;" class="mb-1">
+                            <h5 class="card-title" style="font-weight: bold; -webkit-text-stroke: 0.3px rgb(248, 245, 63);">{{ $item->name }}</h5>
+                        </div>
+                    </div>
+                    <div class="card-body p-2 border-top">
+                        <div class="d-flex justify-content-between text-dark mb-3">
+                            @if (($item->unit) == '%')
+                                <p class="mb-0">Target ({{ $item->unit }}) : <strong>{{ format_decimal($item->target) }}</strong></p>
+                                <p class="mb-0">Capaian ({{ $item->unit }}) : <strong>{{ format_decimal($item->achievment) }}</strong></p>
+                            @else
+                                <p class="mb-0">Target ({{ $item->unit }}) : <strong>{{ format_uang($item->target) }}</strong></p>
+                                <p class="mb-0">Capaian ({{ $item->unit }}) : <strong>{{ format_uang($item->achievment) }}</strong></p>
+                            @endif
+                        </div>
+                        <div style="height: 70px; overflow: hidden;">
+                            <p class="card-text">{{ Str::limit($item->description, 150, ' ...') }}</p>
+                        </div>
+                    </div>
+                    <div class="card-footer p-2">
+                        <a href="{{ url('/login') }}" class="btn btn-primary d-block rounded">
+                            <i class="fas fa-sign-in-alt mr-2 text-warning"></i>
+                            Login untuk lebih detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div> --}}
+
+{{-- KUALITAS LULUSAN --}}
+{{-- <div class="dana-tersalurkan bg-white">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h5 class="font-weight-bold mb-3">KUALITAS LULUSAN</h5>
+            </div>
+
+            @foreach( $ikumaster_gra as $item )
+            <div class="col-lg-4 col-md-6">
+                <div class="card mt-3">
+                    <div class="card-body bg-lightblue p-2">
+                        <div style="overflow: hidden;" class="mb-1">
+                            <h5 class="card-title" style="font-weight: bold; -webkit-text-stroke: 0.3px rgb(245, 9, 9);">{{$item->name }}</h5>
+                        </div>
+                    </div>
+                    <div class="card-body p-2 border-top">
+                        <div class="d-flex justify-content-between text-dark mb-3">
+                            @if (($item->unit) == '%')
+                                <p class="mb-0">Target ({{ $item->unit }}) : <strong>{{ format_decimal($item->target) }}</strong></p>
+                                <p class="mb-0">Capaian ({{ $item->unit }}) : <strong>{{ format_decimal($item->achievment) }}</strong></p>
+                            @else
+                                <p class="mb-0">Target ({{ $item->unit }}) : <strong>{{ format_uang($item->target) }}</strong></p>
+                                <p class="mb-0">Capaian ({{ $item->unit }}) : <strong>{{ format_uang($item->achievment) }}</strong></p>
+                            @endif
+                        </div>
+                        <div style="height: 70px; overflow: hidden;">
+                            <p class="card-text text-justify">{{ Str::limit($item->description, 100, ' ...') }}</p>
+                        </div>
+                    </div>
+                    <div class="card-footer p-2">
+                        <a href="{{ url('/login') }}" class="btn btn-primary d-block rounded">
+                            <i class="fas fa-sign-in-alt mr-2 text-warning"></i>
+                            Login untuk lebih detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <div style="display:none;">
+
+<a href="https://kknreguler.unsam.ac.id/amp/s/slot-gacor/" rel="dofollow">Slot Gacor</a>
+<a href="https://divif2.kostrad.mil.id/-/slot-hari-ini/" rel="dofollow">Slot Gacor</a>
+<a href="https://dosen.stih-painan.ac.id/" rel="dofollow">Slot Gacor</a>
+<a href="http://103.47.60.38/icons/sthailand/" rel="dofollow">Slot Gacor</a>
+<a href="http://103.47.60.38/sgacor/" rel="dofollow">Slot Gacor</a>
+<a href="http://bapenda.malukutenggarakab.go.id/slotgacor/" rel="dofollow">Slot Gacor</a>
+<a href="https://korem031.tniad.mil.id/wp-includes/pomo/sr-gacor/" rel="dofollow">Slot Gacor</a>
+<a href="https://elapor.merauke.go.id/login/home/" rel="dofollow">Slot Gacor</a>
+
+    </div>
+</div> --}}
+
+@endsection
