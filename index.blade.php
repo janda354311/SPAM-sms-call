@@ -19,6 +19,7 @@
 	<link href="{{ asset('/Rocker/assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
 	<link href="{{ asset('/Rocker/assets/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet" />
     <link href="{{ asset('/Rocker/assets/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+
 	
 	<!-- loader-->
 	<link href="{{ asset('/Rocker/assets/css/pace.min.css') }}" rel="stylesheet" />
